@@ -1,4 +1,10 @@
-+ Cài đặt Nginx ở môi trường ngoài Docker (dễ quản lý, dễ xài),cấu hình Nginx như 1 Reverse Proxy
++ Build images
+- docker build -t learning-docker:deploy-node .  (kiểm tra UIG-GID trước khi chạy)
+
++ Run app
+- docker compose up -d
+
+@ Cài đặt Nginx ở môi trường ngoài Docker (dễ quản lý, dễ xài),cấu hình Nginx như 1 Reverse Proxy
 
 + Cài đặt Nginx
 - sudo apt update
@@ -25,10 +31,10 @@ server {
         # allow upload file with size upto 500MB
         client_max_body_size 500M;
 
-        server_name tanphanhue.shop www.tanphanhue.shop;
+        server_name tanphanhue.shop www.tanphanhue.shop; # thay bằng domain của bạn
 
         location / {
-                proxy_pass http://localhost:3000;
+                proxy_pass http://localhost:3000;  #app đang chạy ở cổng 3000
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection 'upgrade';
@@ -49,5 +55,8 @@ server {
 
 + Lấy HTTPS
 - sudo certbot --nginx -d tanphanhue.shop -d www.tanphanhue.shop
+
+
+----- DONE !!!!!! ------
 
 

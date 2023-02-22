@@ -1,26 +1,26 @@
-+ Build images
+@ Build images
 - docker build -t learning-docker:deploy-node .  (kiểm tra UIG-GID trước khi chạy)
 
-+ Run app
+@ Run app
 - docker compose up -d
 
 @ Cài đặt Nginx ở môi trường ngoài Docker (dễ quản lý, dễ xài),cấu hình Nginx như 1 Reverse Proxy
 
-+ Cài đặt Nginx
+@ Cài đặt Nginx
 - sudo apt update
 - sudo apt install nginx
 - sudo service nginx status
 
-+ Tiếp theo cài certbox
+@ Tiếp theo cài Certbox
 - sudo add-apt-repository ppa:certbot/certbot
 - sudo apt-get update
 - sudo apt-get install python-certbot-nginx
 
-+ Xóa cấu hình các file cố định của Nginx
+@ Xóa cấu hình các file cố định của Nginx
 - sudo rm /etc/nginx/sites-available/default
 - sudo rm /etc/nginx/sites-enabled/default
 
-+ Tạo 1 file cấu hình cho domain của chúng ta (ở đây là tanphanhue.shop)
+@ Tạo 1 file cấu hình cho domain của chúng ta (ở đây là tanphanhue.shop)
 - sudo vi /etc/nginx/sites-available/tanphanhue.shop
 - Pass nội dung này vào:
 
@@ -45,15 +45,16 @@ server {
         }
 }
 
-+ Tiếp theo cần tạo Symbolic Link tới folder /etc/nginx/sites-enabled ( để web của mình có thể active )
+@ Tiếp theo cần tạo Symbolic Link tới folder /etc/nginx/sites-enabled ( để web của mình có thể active )
 - sudo ln -s /etc/nginx/sites-available/tanphanhue.shop /etc/nginx/sites-enabled/
 
-+ Kiểm tra cấu hình Nginx ( sudo nginx -t )
+@ Kiểm tra cấu hình Nginx 
+- sudo nginx -t
 
-+ Khởi động lại Nginx Service 
+@ Khởi động lại Nginx Service 
 - sudo service nginx restart
 
-+ Lấy HTTPS
+@ Lấy HTTPS
 - sudo certbot --nginx -d tanphanhue.shop -d www.tanphanhue.shop
 
 

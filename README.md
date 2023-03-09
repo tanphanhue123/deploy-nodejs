@@ -4,7 +4,7 @@
 @ Run app
 - docker compose up -d
 
-@ Cài đặt Nginx ở môi trường ngoài Docker (dễ quản lý, dễ xài),cấu hình Nginx như 1 Reverse Proxy
+@ Cài đặt Nginx ở môi trường ngoài Docker (có thể xài container Nginx r load file cấu hình từ host vào ),cấu hình Nginx như 1 Reverse Proxy
 
 @ Cài đặt Nginx
 - sudo apt update
